@@ -1,0 +1,744 @@
+openapi: 3.0.3
+info:
+  title: FlyNext API
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: http://localhost
+paths:
+  /api/auth/register:
+    post:
+      summary: Register - POST /api/auth/register
+      description: Register - POST /api/auth/register
+      operationId: registerPostApiAuthRegister
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: john@example.com
+                firstName:
+                  type: string
+                  example: John
+                lastName:
+                  type: string
+                  example: Doe
+                password:
+                  type: string
+                  example: MySecretPassword
+                phone:
+                  type: string
+                  example: '1234567890'
+                profilePic:
+                  type: string
+                  example: http://example.com/image.jpg
+            examples:
+              Register - POST /api/auth/register:
+                value:
+                  email: john@example.com
+                  firstName: John
+                  lastName: Doe
+                  password: MySecretPassword
+                  phone: '1234567890'
+                  profilePic: http://example.com/image.jpg
+      responses:
+        '200':
+          description: ''
+  /api/auth/login:
+    post:
+      summary: Login - POST /api/auth/login
+      description: Login - POST /api/auth/login
+      operationId: loginPostApiAuthLogin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: testuser@example.com
+                password:
+                  type: string
+                  example: TestPassword123
+            examples:
+              Login - POST /api/auth/login:
+                value:
+                  email: testuser@example.com
+                  password: TestPassword123
+      responses:
+        '200':
+          description: ''
+  /api/auth/logout:
+    post:
+      summary: Logout - POST /api/auth/logout
+      description: Logout - POST /api/auth/logout
+      operationId: logoutPostApiAuthLogout
+      responses:
+        '200':
+          description: ''
+      security:
+        - jwtBearerAuth: []
+  /api/user:
+    get:
+      summary: Get User Profile - GET /api/user
+      description: Get User Profile - GET /api/user
+      operationId: getUserProfileGetApiUser
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+    put:
+      summary: Update User Profile - PUT /api/user
+      description: Update User Profile - PUT /api/user
+      operationId: updateUserProfilePutApiUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                  example: Johnny
+                lastName:
+                  type: string
+                  example: Doe
+                phone:
+                  type: string
+                  example: '9999999999'
+                profilePic:
+                  type: string
+                  example: http://example.com/new.jpg
+            examples:
+              Update User Profile - PUT /api/user:
+                value:
+                  firstName: Johnny
+                  lastName: Doe
+                  phone: '9999999999'
+                  profilePic: http://example.com/new.jpg
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/hotels:
+    get:
+      summary: Search Hotels - GET /api/hotels
+      description: Search Hotels - GET /api/hotels
+      operationId: searchHotelsGetApiHotels
+      parameters:
+        - name: city=Toronto, checkIn=2025-03-10, checkOut=2025-03-12
+          in: query
+          schema:
+            type: string
+            example: ''
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+    post:
+      summary: Create Hotel - POST /api/hotels
+      description: Create Hotel - POST /api/hotels
+      operationId: createHotelPostApiHotels
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  example: 123 Main Street, Toronto, ON
+                images:
+                  type: array
+                  items:
+                    type: string
+                    example: http://example.com/img1.jpg
+                  example:
+                    - http://example.com/img1.jpg
+                location:
+                  type: string
+                  example: Toronto, ON
+                logo:
+                  type: string
+                  example: http://example.com/logo.jpg
+                name:
+                  type: string
+                  example: Grand Palace
+                starRating:
+                  type: number
+                  example: 5
+            examples:
+              Create Hotel - POST /api/hotels:
+                value:
+                  address: 123 Main Street, Toronto, ON
+                  images:
+                    - http://example.com/img1.jpg
+                  location: Toronto, ON
+                  logo: http://example.com/logo.jpg
+                  name: Grand Palace
+                  starRating: 5
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/hotels/1:
+    get:
+      summary: Get Hotel Details - GET /api/hotels/[hotelId]
+      description: Get Hotel Details - GET /api/hotels/[hotelId]
+      operationId: getHotelDetailsGetApiHotelsHotelid
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+    delete:
+      summary: Delete Hotel - DELETE /api/hotels/[hotelId]
+      description: Delete Hotel - DELETE /api/hotels/[hotelId]
+      operationId: deleteHotelDeleteApiHotelsHotelid
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/hotels/1/room-types:
+    get:
+      summary: Get Room Types - GET /api/hotels/[hotelId]/room-types
+      description: Get Room Types - GET /api/hotels/[hotelId]/room-types
+      operationId: getRoomTypesGetApiHotelsHotelidRoomTypes
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/hotels/2/room-types:
+    post:
+      summary: Create Room Type - POST /api/hotels/[hotelId]/room-types
+      description: Create Room Type - POST /api/hotels/[hotelId]/room-types
+      operationId: createRoomTypePostApiHotelsHotelidRoomTypes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amenities:
+                  type: array
+                  items:
+                    type: string
+                    example: WiFi
+                  example:
+                    - WiFi
+                    - TV
+                    - AC
+                currentAvailability:
+                  type: number
+                  example: 10
+                images:
+                  type: array
+                  items:
+                    type: string
+                    example: http://example.com/room1.jpg
+                  example:
+                    - http://example.com/room1.jpg
+                name:
+                  type: string
+                  example: Double Room
+                pricePerNight:
+                  type: number
+                  example: 149.99
+            examples:
+              Create Room Type - POST /api/hotels/[hotelId]/room-types:
+                value:
+                  amenities:
+                    - WiFi
+                    - TV
+                    - AC
+                  currentAvailability: 10
+                  images:
+                    - http://example.com/room1.jpg
+                  name: Double Room
+                  pricePerNight: 149.99
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/hotels/2/room-types/1:
+    get:
+      summary: >-
+        Get Room Type Details - GET
+        /api/hotels/[hotelId]/room-types/[roomTypeId]
+      description: >-
+        Get Room Type Details - GET
+        /api/hotels/[hotelId]/room-types/[roomTypeId]
+      operationId: getRoomTypeDetailsGetApiHotelsHotelidRoomTypesRoomtypeid
+      parameters:
+        - name: startDate
+          in: query
+          schema:
+            type: string
+            example: '2025-03-10'
+        - name: endDate
+          in: query
+          schema:
+            type: string
+            example: '2025-03-11'
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+    put:
+      summary: Update Room Type - PUT /api/hotels/[hotelId]/room-types/[roomTypeId]
+      description: Update Room Type - PUT /api/hotels/[hotelId]/room-types/[roomTypeId]
+      operationId: updateRoomTypePutApiHotelsHotelidRoomTypesRoomtypeid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                availabilities:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      available:
+                        type: number
+                        example: 5
+                      date:
+                        type: string
+                        example: '2025-03-10'
+                  example:
+                    - available: 5
+                      date: '2025-03-10'
+                    - available: 3
+                      date: '2025-03-11'
+            examples:
+              Create/Update Room Availability - POST/PUT /api/hotels/[hotelId]/room-types/[roomTypeId]:
+                value:
+                  availabilities:
+                    - available: 5
+                      date: '2025-03-10'
+                    - available: 3
+                      date: '2025-03-11'
+              Update Room Type - PUT /api/hotels/[hotelId]/room-types/[roomTypeId]:
+                value:
+                  amenities:
+                    - WiFi
+                    - TV
+                  currentAvailability: 5
+                  images:
+                    - http://example.com/newroom.jpg
+                  name: Double Room - Renovated
+                  pricePerNight: 159.99
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+    delete:
+      summary: Delete Room Type - DELETE /api/hotels/[hotelId]/room-types/[roomTypeId]
+      description: Delete Room Type - DELETE /api/hotels/[hotelId]/room-types/[roomTypeId]
+      operationId: deleteRoomTypeDeleteApiHotelsHotelidRoomTypesRoomtypeid
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/hotels/book:
+    post:
+      summary: Book Hotel - POST /api/hotels/book
+      description: Book Hotel - POST /api/hotels/book
+      operationId: bookHotelPostApiHotelsBook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                checkIn:
+                  type: string
+                  example: '2025-03-10'
+                checkOut:
+                  type: string
+                  example: '2025-03-12'
+                hotelId:
+                  type: number
+                  example: 10
+                roomTypeId:
+                  type: number
+                  example: 100
+            examples:
+              Book Hotel - POST /api/hotels/book:
+                value:
+                  checkIn: '2025-03-10'
+                  checkOut: '2025-03-12'
+                  hotelId: 10
+                  roomTypeId: 100
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/hotels/owner:
+    get:
+      summary: Owner View Reservations - GET /api/hotels/owner
+      description: Owner View Reservations - GET /api/hotels/owner
+      operationId: ownerViewReservationsGetApiHotelsOwner
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /app/api/itineraries/500/hotels/owner-cancel:
+    delete:
+      summary: >-
+        Owner Cancel Hotel Booking - DELETE
+        /app/api/itineraries/[itineraryId]/hotels/owner-cancel
+      description: >-
+        Owner Cancel Hotel Booking - DELETE
+        /app/api/itineraries/[itineraryId]/hotels/owner-cancel
+      operationId: >-
+        ownerCancelHotelBookingDeleteAppApiItinerariesItineraryidHotelsOwnerCancel
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /app/api/itineraries/500/hotels/user-cancel:
+    delete:
+      summary: >-
+        User Cancel Hotel Booking - DELETE
+        /app/api/itineraries/[itineraryId]/hotels/user-cancel
+      description: >-
+        User Cancel Hotel Booking - DELETE
+        /app/api/itineraries/[itineraryId]/hotels/user-cancel
+      operationId: userCancelHotelBookingDeleteAppApiItinerariesItineraryidHotelsUserCancel
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/flights/search:
+    get:
+      summary: Search Flights - GET /api/flights/search
+      description: Search Flights - GET /api/flights/search
+      operationId: searchFlightsGetApiFlightsSearch
+      parameters:
+        - name: origin
+          in: query
+          schema:
+            type: string
+            example: YYZ
+        - name: destination
+          in: query
+          schema:
+            type: string
+            example: LAX
+        - name: date
+          in: query
+          schema:
+            type: string
+            example: '2025-05-01'
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/flights/book:
+    post:
+      summary: Book Flight - POST /api/flights/book
+      description: Book Flight - POST /api/flights/book
+      operationId: bookFlightPostApiFlightsBook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: john@example.com
+                firstName:
+                  type: string
+                  example: John
+                flightIds:
+                  type: array
+                  items:
+                    type: string
+                    example: bd7ee4df-004d-4c95-abda-633d276a5842
+                  example:
+                    - bd7ee4df-004d-4c95-abda-633d276a5842
+                lastName:
+                  type: string
+                  example: Doe
+                passportNumber:
+                  type: string
+                  example: AB123456
+            examples:
+              Book Flight - POST /api/flights/book:
+                value:
+                  email: john@example.com
+                  firstName: John
+                  flightIds:
+                    - bd7ee4df-004d-4c95-abda-633d276a5842
+                  lastName: Doe
+                  passportNumber: AB123456
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/itineraries/500/flights:
+    delete:
+      summary: Cancel/Verify Flight - DELETE/GET /api/itineraries/[itineraryId]/flights
+      description: Cancel/Verify Flight - DELETE/GET /api/itineraries/[itineraryId]/flights
+      operationId: cancelVerifyFlightDeleteGetApiItinerariesItineraryidFlights
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/itineraries:
+    get:
+      summary: List Itineraries - GET /api/itineraries
+      description: List Itineraries - GET /api/itineraries
+      operationId: listItinerariesGetApiItineraries
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+    post:
+      summary: Create Itinerary - POST /api/itineraries
+      description: Create Itinerary - POST /api/itineraries
+      operationId: createItineraryPostApiItineraries
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                initialFlightId:
+                  type: number
+                  example: 400
+                initialHotelId:
+                  type: number
+                  example: 300
+            examples:
+              Create Itinerary - POST /api/itineraries:
+                value:
+                  initialFlightId: 400
+                  initialHotelId: 300
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/itineraries/500:
+    get:
+      summary: Get Itinerary Details - GET /api/itineraries/[itineraryId]
+      description: Get Itinerary Details - GET /api/itineraries/[itineraryId]
+      operationId: getItineraryDetailsGetApiItinerariesItineraryid
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+    delete:
+      summary: Cancel Itinerary - DELETE /api/itineraries/[itineraryId]
+      description: Cancel Itinerary - DELETE /api/itineraries/[itineraryId]
+      operationId: cancelItineraryDeleteApiItinerariesItineraryid
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/checkout:
+    post:
+      summary: Checkout - POST /api/checkout
+      description: Checkout - POST /api/checkout
+      operationId: checkoutPostApiCheckout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cardExpiry:
+                  type: string
+                  example: 12/28
+                cardNumber:
+                  type: string
+                  example: '4242424242424242'
+                itineraryId:
+                  type: number
+                  example: 500
+            examples:
+              Checkout - POST /api/checkout:
+                value:
+                  cardExpiry: 12/28
+                  cardNumber: '4242424242424242'
+                  itineraryId: 500
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/user/hotel-bookings:
+    get:
+      summary: List User Hotel Bookings - GET /api/user/hotel-bookings
+      description: List User Hotel Bookings - GET /api/user/hotel-bookings
+      operationId: listUserHotelBookingsGetApiUserHotelBookings
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/user/hotel-bookings/456:
+    get:
+      summary: Get Specific Hotel Booking - GET /api/user/hotel-bookings/[bookingId]
+      description: Get Specific Hotel Booking - GET /api/user/hotel-bookings/[bookingId]
+      operationId: getSpecificHotelBookingGetApiUserHotelBookingsBookingid
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/user/flight-bookings:
+    get:
+      summary: List User Flight Bookings - GET /api/user/flight-bookings
+      description: List User Flight Bookings - GET /api/user/flight-bookings
+      operationId: listUserFlightBookingsGetApiUserFlightBookings
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/user/flight-bookings/123:
+    get:
+      summary: Get Specific Flight Booking - GET /api/user/flight-bookings/[bookingId]
+      description: Get Specific Flight Booking - GET /api/user/flight-bookings/[bookingId]
+      operationId: getSpecificFlightBookingGetApiUserFlightBookingsBookingid
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/notifications:
+    get:
+      summary: Get Notifications - GET /api/notifications
+      description: Get Notifications - GET /api/notifications
+      operationId: getNotificationsGetApiNotifications
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+    post:
+      summary: Create Notification - POST /api/notifications
+      description: Create Notification - POST /api/notifications
+      operationId: createNotificationPostApiNotifications
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  example: sample content ahh
+            examples:
+              Create Notification - POST /api/notifications:
+                value:
+                  content: sample content ahh
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/notifications/unread-count:
+    get:
+      summary: Get Unread Notification Count - GET /api/notifications/unread-count
+      description: Get Unread Notification Count - GET /api/notifications/unread-count
+      operationId: getUnreadNotificationCountGetApiNotificationsUnreadCount
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/notifications/600/read:
+    put:
+      summary: Mark Notification as Read - PUT /api/notifications/[notificationId]/read
+      description: Mark Notification as Read - PUT /api/notifications/[notificationId]/read
+      operationId: markNotificationAsReadPutApiNotificationsNotificationidRead
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/locations/cities:
+    get:
+      summary: Search Cities - GET /api/locations/cities
+      description: Search Cities - GET /api/locations/cities
+      operationId: searchCitiesGetApiLocationsCities
+      parameters:
+        - name: q%3DTor
+          in: query
+          schema:
+            type: string
+            example: ''
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/locations/airports:
+    get:
+      summary: Search Airports - GET /api/locations/airports
+      description: Search Airports - GET /api/locations/airports
+      operationId: searchAirportsGetApiLocationsAirports
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+            example: |
+              YYZ
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /api/invoice:
+    get:
+      summary: Generate Invoice - GET /api/invoice
+      description: Generate Invoice - GET /api/invoice
+      operationId: generateInvoiceGetApiInvoice
+      parameters:
+        - name: itineraryId
+          in: query
+          schema:
+            type: string
+            example: '500'
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+components:
+  securitySchemes:
+    jwtBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+tags: []

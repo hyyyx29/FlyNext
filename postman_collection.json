@@ -1,0 +1,1394 @@
+{
+	"info": {
+		"_postman_id": "50338bd7-1c8e-44f9-a430-6e32ff5bcb9f",
+		"name": "FlyNext API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register - POST /api/auth/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"john@example.com\",\r\n    \"password\": \"MySecretPassword\",\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"phone\": \"1234567890\",\r\n    \"profilePic\": \"http://example.com/image.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - POST /api/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"testuser@example.com\",\r\n  \"password\": \"TestPassword123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout - POST /api/auth/logout",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "payload",
+							"value": "{}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4Mjg5OSwiZXhwIjoxNzQxNDg2NDk5fQ.FO01kxFDC_ujEbt_CkxfDmHzWscEwrFshGValenh0QA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Profile - GET /api/user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Profile - PUT /api/user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Johnny\",\r\n  \"lastName\": \"Doe\",\r\n  \"phone\": \"9999999999\",\r\n  \"profilePic\": \"http://example.com/new.jpg\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Hotels - GET /api/hotels",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hotels?city%3DToronto, checkIn%3D2025-03-10, checkOut%3D2025-03-12=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels"
+					],
+					"query": [
+						{
+							"key": "city=Toronto, checkIn=2025-03-10, checkOut=2025-03-12",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Hotel - POST /api/hotels",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Grand Palace\",\r\n  \"logo\": \"http://example.com/logo.jpg\",\r\n  \"address\": \"123 Main Street, Toronto, ON\",\r\n  \"location\": \"Toronto, ON\",\r\n  \"starRating\": 5,\r\n  \"images\": [\"http://example.com/img1.jpg\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/hotels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hotel Details - GET /api/hotels/[hotelId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Hotel - PUT /api/hotels/[hotelId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Hotel - DELETE /api/hotels/[hotelId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Room Types - GET /api/hotels/[hotelId]/room-types",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/1/room-types",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"1",
+						"room-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Room Type - POST /api/hotels/[hotelId]/room-types",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Double Room\",\r\n  \"amenities\": [\"WiFi\", \"TV\", \"AC\"],\r\n  \"pricePerNight\": 149.99,\r\n  \"images\": [\"http://example.com/room1.jpg\"],\r\n  \"currentAvailability\": 10\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/2/room-types",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"2",
+						"room-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Room Type Details - GET /api/hotels/[hotelId]/room-types/[roomTypeId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/2/room-types/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"2",
+						"room-types",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Room Type - PUT /api/hotels/[hotelId]/room-types/[roomTypeId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4ODk4MywiZXhwIjoxNzQxNDkyNTgzfQ.Y_aZ-jtpPro7QfyWuznKrSH0COUYxRYu117FRMJhB_w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Double Room - Renovated\",\r\n  \"amenities\": [\"WiFi\", \"TV\"],\r\n  \"pricePerNight\": 159.99,\r\n  \"images\": [\"http://example.com/newroom.jpg\"],\r\n  \"currentAvailability\": 5\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/2/room-types/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"2",
+						"room-types",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Room Type - DELETE /api/hotels/[hotelId]/room-types/[roomTypeId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/2/room-types/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"2",
+						"room-types",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Room Availability - GET /api/hotels/[hotelId]/room-types/[roomTypeId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/2/room-types/1?startDate=2025-03-10&endDate=2025-03-11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"2",
+						"room-types",
+						"1"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2025-03-10"
+						},
+						{
+							"key": "endDate",
+							"value": "2025-03-11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create/Update Room Availability - POST/PUT /api/hotels/[hotelId]/room-types/[roomTypeId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"availabilities\": [\r\n    { \"date\": \"2025-03-10\", \"available\": 5 },\r\n    { \"date\": \"2025-03-11\", \"available\": 3 }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/2/room-types/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"2",
+						"room-types",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book Hotel - POST /api/hotels/book",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hotelId\": 10,\r\n  \"roomTypeId\": 100,\r\n  \"checkIn\": \"2025-03-10\",\r\n  \"checkOut\": \"2025-03-12\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Owner View Reservations - GET /api/hotels/owner",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/hotels/owner",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hotels",
+						"owner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Owner Cancel Hotel Booking - DELETE /app/api/itineraries/[itineraryId]/hotels/owner-cancel",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/app/api/itineraries/500/hotels/owner-cancel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"app",
+						"api",
+						"itineraries",
+						"500",
+						"hotels",
+						"owner-cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Cancel Hotel Booking - DELETE /app/api/itineraries/[itineraryId]/hotels/user-cancel",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/app/api/itineraries/500/hotels/user-cancel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"app",
+						"api",
+						"itineraries",
+						"500",
+						"hotels",
+						"user-cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Flights - GET /api/flights/search",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/flights/search?origin=YYZ&destination=LAX&date=2025-05-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"flights",
+						"search"
+					],
+					"query": [
+						{
+							"key": "origin",
+							"value": "YYZ"
+						},
+						{
+							"key": "destination",
+							"value": "LAX"
+						},
+						{
+							"key": "date",
+							"value": "2025-05-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book Flight - POST /api/flights/book",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4MzQ5MiwiZXhwIjoxNzQxNDg3MDkyfQ.ABBpCogifzgaa-0pgWbbr9TX26IyppSJ6x2mhx23fAQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Doe\",\r\n  \"passportNumber\": \"AB123456\",\r\n  \"flightIds\": [\"bd7ee4df-004d-4c95-abda-633d276a5842\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/flights/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"flights",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel/Verify Flight - DELETE/GET /api/itineraries/[itineraryId]/flights",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NTQzMywiZXhwIjoxNzQxNDg5MDMzfQ.xdNHQsATrQpllrEo8aIAlaPjw2sV3Zkz8fgGPY7VNQQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/itineraries/500/flights",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"itineraries",
+						"500",
+						"flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Itineraries - GET /api/itineraries",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NjQ5OCwiZXhwIjoxNzQxNDkwMDk4fQ.rDYq8aNnRNho7o-F0IfE4i7CJdy40Ch7Sjb-OGq6VlQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/itineraries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"itineraries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Itinerary - POST /api/itineraries",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"initialFlightId\": 400,\r\n  \"initialHotelId\": 300\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/itineraries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"itineraries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Itinerary Details - GET /api/itineraries/[itineraryId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/itineraries/500",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"itineraries",
+						"500"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Itinerary - DELETE /api/itineraries/[itineraryId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NjQ5OCwiZXhwIjoxNzQxNDkwMDk4fQ.rDYq8aNnRNho7o-F0IfE4i7CJdy40Ch7Sjb-OGq6VlQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/itineraries/500",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"itineraries",
+						"500"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checkout - POST /api/checkout",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"itineraryId\": 500,\r\n  \"cardNumber\": \"4242424242424242\",\r\n  \"cardExpiry\": \"12/28\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/checkout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List User Hotel Bookings - GET /api/user/hotel-bookings",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/user/hotel-bookings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"hotel-bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Hotel Booking - GET /api/user/hotel-bookings/[bookingId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/user/hotel-bookings/456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"hotel-bookings",
+						"456"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List User Flight Bookings - GET /api/user/flight-bookings",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/user/flight-bookings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"flight-bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Flight Booking - GET /api/user/flight-bookings/[bookingId]",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/user/flight-bookings/123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"flight-bookings",
+						"123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Notifications - GET /api/notifications",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/notifications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Notification - POST /api/notifications",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"sample content ahh\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/notifications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Unread Notification Count - GET /api/notifications/unread-count",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/notifications/unread-count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"notifications",
+						"unread-count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mark Notification as Read - PUT /api/notifications/[notificationId]/read",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/notifications/600/read",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"notifications",
+						"600",
+						"read"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Cities - GET /api/locations/cities",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/locations/cities?q%3DTor=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"locations",
+						"cities"
+					],
+					"query": [
+						{
+							"key": "q%3DTor",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Airports - GET /api/locations/airports",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/locations/airports?q=YYZ\n",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"locations",
+						"airports"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "YYZ\n"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Invoice - GET /api/invoice",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MTQ4NzE0NiwiZXhwIjoxNzQxNDkwNzQ2fQ.MMm_pLhxvxyJcEHhGOApRGC8S7NAQqojZPtqlv6o2nw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/invoice?itineraryId=500",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"invoice"
+					],
+					"query": [
+						{
+							"key": "itineraryId",
+							"value": "500"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
