@@ -1,4 +1,4 @@
-# FlyNext ✈️
+# FlyNext
 
 A full-stack travel booking platform: search flights, book hotel rooms, and manage complete trips in one place.
 
@@ -6,12 +6,12 @@ Built with **Next.js 15 (App Router)**, **Prisma**, and **SQLite**, exposing ~30
 
 ## Features
 
-- 🔐 **Authentication** — JWT auth with access/refresh token rotation (register, login, logout, refresh)
-- ✈️ **Flights** — one-way and round-trip search with multi-leg itineraries, booking and cancellation via an external flight-supplier API
-- 🏨 **Hotels** — hotel owners can create hotels, define room types, pricing and availability; travellers can search by city, date range, price and star rating, then book
-- 🧳 **Itineraries** — combine flight and hotel bookings into a single trip
-- 🧾 **Checkout & invoices** — checkout flow with card validation and downloadable PDF invoices (pdfkit)
-- 🔔 **Notifications** — in-app notifications with unread counts for booking events
+- **Authentication** — JWT auth with access/refresh token rotation (register, login, logout, refresh)
+- **Flights** — one-way and round-trip search with multi-leg itineraries, booking and cancellation via an external flight-supplier API
+- **Hotels** — hotel owners can create hotels, define room types, pricing and availability; travellers can search by city, date range, price and star rating, then book
+- **Itineraries** — combine flight and hotel bookings into a single trip
+- **Checkout & invoices** — checkout flow with card validation and downloadable PDF invoices (pdfkit)
+- **Notifications** — in-app notifications with unread counts for booking events
 
 ## Tech stack
 
